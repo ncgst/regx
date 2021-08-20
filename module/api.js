@@ -1,4 +1,5 @@
 'use strict'
+const bcrypt = require('bcrypt');
 const crypto = require('crypto')
 const https = require('https')
 
@@ -113,6 +114,9 @@ exports.encrypt = (str, saltlen = 8, ea) => {
       break
     case 'BASE64DE':
       return encrypt_.BASE64DE(str)
+      break
+    case 'BCRYPT':
+      return bcrypt.hashSync(str, saltlen)
       break
     default:
       return str
