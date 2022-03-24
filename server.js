@@ -150,11 +150,11 @@ express.post('/api/post', async (req, res) => {
   }
 })
 
-var server = express.listen(config.server.port, () => {
+var server = express.listen(config.server.port, config.server.host, () => {
   var host = server.address().address
   var port = server.address().port
+  
+  console.log('*** Server is running on host: ' + host + ':' + port + ' ***')
 })
-
-console.log('*** Server is running on host: ' + server.address().address + ':' + server.address().port + ' ***')
 
 // END
